@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Alahi - Blockchain Community Moderator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .bg-gradient {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            top: -250px;
+            right: -250px;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            bottom: -200px;
+            left: -200px;
+            animation-delay: 5s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            top: 50%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(100px, -100px) scale(1.1); }
+            66% { transform: translate(-100px, 100px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-card h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-card .location {
+            color: #888;
+            font-size: 16px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .social-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .bio-section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .bio-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bio-section p {
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .skill-card p {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid #0a0a0a;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(8px);
+        }
+
+        .timeline-role {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-company {
+            color: #667eea;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-period {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .timeline-description {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .achievements-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .achievements-list li {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+            color: #aaa;
+            font-size: 14px;
+            transition: all 0.3s;
+            padding-left: 50px;
+            position: relative;
+        }
+
+        .achievements-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 20px;
+            color: #667eea;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .achievements-list li:hover {
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .interest-tag {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .interest-tag:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .profile-card {
+                padding: 40px 24px;
+            }
+
+            .profile-card h1 {
+                font-size: 28px;
+            }
+
+            .bio-section {
+                padding: 30px 24px;
+            }
+
+            .skills-grid,
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+
+            .social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="bg-gradient">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <div class="container">
+        <div class="profile-card">
+            <img src="https://i.postimg.cc/wxt4ZyhS/20250330-141247-00002.png" alt="Abdul Alahi" class="profile-img">
+            <h1>Abdul Alahi</h1>
+            <p class="location">📍 Dhaka, Bangladesh | ✉ mdabdulalahi2@gmail.com</p>
+            <div class="social-links">
+                <a href="https://x.com/itsyourabdul" target="_blank" class="social-btn">𝕏 Twitter</a>
+                <a href="https://discord.com/users/itsyourabdul" target="_blank" class="social-btn">💬 Discord</a>
+            </div>
+        </div>
+
+        <div class="bio-section">
+            <h2>About Me</h2>
+            <p>Community Moderator with 4.5+ years of experience in blockchain ecosystems, specializing in decentralized technologies, privacy-first platforms, and community engagement.</p>
+            <p>I'm passionate about building inclusive communities where every voice matters. My work focuses on fostering trust through transparency, managing support channels efficiently, and translating complex technical concepts into accessible narratives that resonate with diverse audiences.</p>
+            <p>With deep expertise in ZK protocols, interoperability, and decentralized infrastructure, I bridge the gap between cutting-edge blockchain technology and the communities that power them.</p>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Community Management</h3>
+                    <p>Discord & Telegram moderation with thousands of members</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Support Systems</h3>
+                    <p>Efficient ticketing and community care</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Strategic Communication</h3>
+                    <p>Technical storytelling for diverse audiences</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Governance</h3>
+                    <p>Transparency advocacy & community leadership</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Cross-Cultural Collaboration</h3>
+                    <p>Multilingual global engagement</p>
+                </div>
+                <div class="skill-card">
+                    <h3>ZK Protocols</h3>
+                    <p>Privacy tech & decentralized infrastructure</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-role">Moderator</div>
+                        <div class="timeline-company">T3RN • 375ai • Bloopers</div>
+                        <div class="timeline-period">2023 – Present</div>
+                        <div class="timeline-description">
+                            Managing vibrant Discord and Telegram communities with thousands of members. Resolving support tickets efficiently, facilitating AMA sessions, and collaborating with core teams to relay updates and gather community insights.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-role">Ambassador</div>
+                        <div class="timeline-company">Polyhedra Network • Nillion • Nesa • Hyperbolic</div>
+                        <div class="timeline-period">2022 – Present</div>
+                        <div class="timeline-description">
+                            Promoting privacy-first and ZK-based technologies across social platforms. Creating tailored content to highlight technical innovations and engaging with community members to drive adoption.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-role">Contributor</div>
+                        <div class="timeline-company">zkLink • PIP • Ambrus Studio • Others</div>
+                        <div class="timeline-period">2021 – 2023</div>
+                        <div class="timeline-description">
+                            Supporting early-stage community growth and onboarding. Providing strategic feedback on UX and governance models while helping shape brand voice and community tone.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Achievements</h2>
+            <ul class="achievements-list">
+                <li>Built and sustained high-engagement communities across multiple blockchain projects</li>
+                <li>Recognized for rapid response times and empathetic moderation style</li>
+                <li>Amplified positive sentiment and resilience during critical project pivots</li>
+                <li>Delivered platform-optimized content with strong visual identity</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-tag">🔐 Universal ZK Protocols</div>
+                <div class="interest-tag">💻 Decentralized Computing</div>
+                <div class="interest-tag">🗳️ Community-Led Governance</div>
+                <div class="interest-tag">🤖 AI × Blockchain</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Abdul Alahi. Building the future of decentralized communities.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate elements on scroll
+        document.querySelectorAll('.skill-card, .timeline-item, .achievements-list li, .interest-tag').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
